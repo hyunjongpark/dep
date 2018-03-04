@@ -22,9 +22,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { typography } from 'material-ui/styles';
-import BackupIcon from 'material-ui-icons/Backup';
-import AccountCircleIcon from 'material-ui-icons/AccountCircle';
-import AccessTimeIcon from 'material-ui-icons/AccessTime';
+import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
+import ActionGetApp from 'material-ui/svg-icons/action/get-app';
+import ActionSchedule from 'material-ui/svg-icons/action/schedule';
 
 export default class SnapshotDetailSummary extends React.Component {
     constructor(props) {
@@ -38,6 +38,16 @@ export default class SnapshotDetailSummary extends React.Component {
                 fontWeight: typography.fontWeightLight,
                 fontSize: 14,
             },
+          
+
+            stitle: {
+                marginTop:10,
+            }, 
+
+            text1: {
+                valing: 'middle',
+            },
+            
             content: {
                 fontSize: 14,
                 color: 'DarkGray'
@@ -49,19 +59,22 @@ export default class SnapshotDetailSummary extends React.Component {
         };
 
         return (
-            <div className="metaContainer">
-                <span className="meta-item">
-                    <AccountCircleIcon className="meta-icon" />
-                    <span> {this.props.user} </span>
-                </span>
-                <span className="meta-item">
-                    <AccessTimeIcon className="meta-icon" />
-                    <span>{this.props.createTime}</span>
-                </span>
-                <span className="metaItem">
-                    <BackupIcon className="metaIcon" />
-                    <span> {this.props.updatedServices.length} updated services</span>
-                </span>
+            <div >
+                <div style={styles.stitle}>
+                    <span style={styles.flex}>
+                        <ActionAccountCircle />
+                        <span> {this.props.user} </span>
+                    </span>
+                    
+                    <span >
+                        <ActionSchedule />
+                        <span>{this.props.createTime}</span>
+                    </span>
+                    <span c>
+                        <ActionGetApp />
+                        <span> {this.props.updatedServices.length} updated services</span>
+                    </span>
+                </div>
                 <div>
                     <ul>
                         {/* // TODO: refactoring repeat operation */}

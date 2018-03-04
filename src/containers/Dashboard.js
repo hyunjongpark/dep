@@ -27,6 +27,8 @@ import { green600 } from 'material-ui/styles/colors';
 import DeviceDataUsage from 'material-ui/svg-icons/device/data-usage'
 import ServiceBox from '../components/dashboard/ServiceBox';
 import { connect } from 'react-redux';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -38,6 +40,10 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
+    this.loadSnapshotList()
+  }
+
+  componentWillReceiveProps(){
     this.loadSnapshotList()
   }
 
@@ -81,15 +87,16 @@ class Dashboard extends React.Component {
       <PageBase
         navigation={"Dashboard / " + this.state.snapshotName}
       >
-        <div className='row'>
+       <div className='row'>
           {this.state.services.map((item, i) => {
-            return (<div key={i} className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+            return (
+            <div key={i} className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
               <ServiceBox Icon={DeviceDataUsage}
                 color={green600}
                 title={item.name}
                 version={item.version}
               />
-            </div>);
+            </div> );
           })}
         </div>
       </PageBase>

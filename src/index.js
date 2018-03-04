@@ -25,7 +25,7 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import store from './modules';
 import './styles.scss';
-import 'font-awesome/css/font-awesome.css';
+// import 'font-awesome/css/font-awesome.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 import App from './App';
 

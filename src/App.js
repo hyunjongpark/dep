@@ -47,7 +47,7 @@ export default class App extends React.Component {
             <div>
               <Switch>
                 <Route exact path="/" component={Dashboard} />
-                <Route exact path="/:distribution/dashboard" component={Dashboard} />
+                <Route path="/:distribution/dashboard" component={Dashboard} />
                 <Route exact path="/:distribution/snapshots" component={Snapshot} />
                 <Route exact path="/:distribution/snapshot/:name" component={SnapshotDetail} />
               </Switch>

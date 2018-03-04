@@ -20,6 +20,7 @@
 *
 */
 import React from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -29,7 +30,6 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import ViewModule from 'material-ui/svg-icons/action/view-module';
 import { white } from 'material-ui/styles/colors';
-import history from '../History';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as distributionActions from '../modules/distribution';
@@ -58,14 +58,12 @@ class Header extends React.Component {
     }
   }
 
+
   handleChangeDistribution = (event, value) => {
     const { distributionActions } = this.props;
     distributionActions.setDistributionName(value);
     Data.distributionName = value;
-    history.push('/');
-    // history.replace('/' + value + '/dashboard');
-    // this.context.router.history.push('/' + value + '/dashboard');
-    
+    return <Link to='/' />;    
   };
 
   render() {
@@ -116,7 +114,7 @@ class Header extends React.Component {
 
               </IconMenu>
 
-              <IconMenu
+              {/* <IconMenu
                 color={white}
                 iconButtonElement={
                   <IconButton><MoreVertIcon color={white} /></IconButton>
@@ -125,7 +123,7 @@ class Header extends React.Component {
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
               >
                 <MenuItem primaryText="login" />
-              </IconMenu>
+              </IconMenu> */}
             </div>
           }
         />

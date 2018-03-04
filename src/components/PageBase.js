@@ -23,32 +23,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { typography } from 'material-ui/styles';
-import { grey600 } from 'material-ui/styles/colors';
+import { grey600, grey50 } from 'material-ui/styles/colors';
+import { black } from 'material-ui/styles/colors';
 
 const PageBase = (props) => {
   const { navigation, children } = props;
   const styles = {
     navigation: {
-      fontSize: 15,
+      fontSize: 20,
       fontWeight: typography.fontWeightLight,
       color: grey600,
-      paddingBottom: 10,
-      paddingLeft: 15,
-      display: 'block'
+      padding: 15,
+      display: 'block',
+      background: grey50
     },
     paper: {
-      padding: 10
+      padding: 0
     },
     clear: {
       clear: 'both'
+    },
+    main: {
+      padding: 20
+    },
+    title: {
+      boxSizing: 'borderBox',
+      // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      // background: grey600,
+      // height: 56,
+      // padding: 0 24,
+      // display: 'flex',
+      justifyContent: 'spaceBetween',
     }
   };
 
   return (
     <div>
-      <span style={styles.navigation}>{navigation}</span>
       <Paper style={styles.paper}>
-        {children}
+        <div style={styles.navigation}>{navigation}</div>
+        <div style={styles.main}>
+          {children}
+        </div>
         <div style={styles.clear} />
       </Paper>
     </div>

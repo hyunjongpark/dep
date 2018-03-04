@@ -79,7 +79,7 @@ class SnapshotDetail extends React.Component {
       >
         <div>
           <div>
-            <p>Summary</p>
+            <h3>Summary</h3>
             <Divider />
             <SnapshotDetailSummary
               user={this.state.user}
@@ -91,7 +91,7 @@ class SnapshotDetail extends React.Component {
               tag={this.state.tag}
             />
             <Divider />
-            <p>Total Services List</p>
+            <h3>Total Services List</h3>
             <SnapshotDetailServiceList services={this.state.services} />
           </div>
         </div>

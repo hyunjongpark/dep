@@ -22,61 +22,96 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
-import { grey800 } from 'material-ui/styles/colors';
+import { grey800, grey400 } from 'material-ui/styles/colors';
 import { typography } from 'material-ui/styles';
+import { relative } from 'path';
+import { red100 } from 'material-ui/styles/colors';
+import { red50 } from 'material-ui/styles/colors';
+import { yellow100 } from 'material-ui/styles/colors';
 
 export default class ServiceBox extends React.Component {
-
   render() {
     const { color, title, version, Icon } = this.props;
 
     const styles = {
       paper: {
-        outlineStyle: 'solid',
+        position: 'relative',
+        outlineStyle: 'ridge',
+        outlineWidth: 1,
         fontWeight: typography.textDarkBlack,
-        color: grey800,
+        color: grey400,
+        padding: 5,
+        marginBottom: 30
       },
       content: {
         padding: '5px 10px 5px 10px',
         marginLeft: 10,
-        height: 80,
-      },
+        height: 110,
+       },
       title: {
         fontSize: 25,
         fontWeight: typography.fontWeightNormal,
-        color: grey800
+        color: grey800,
+        display: 'block',
+        // marginTop: ,
+        height:80,
+        width: '70%'
       },
       version: {
+        position: 'absolute',
+        top: '80px',
+        left: '25px',
         fontSize: 12,
         fontWeight: typography.fontWeightNormal,
-        marginLeft: 50,
-        color: grey800,
+        color: grey400,
       },
       iconSpan: {
+        position: 'relative',
         float: 'right',
-        textAlign: 'center'
+        textAlign: 'center',
       },
       icon: {
         height: 90,
         width: 90
-      }
+      },
+      ex: {
+        position: 'absolute',
+        top: '30px',
+        left: '30px',
+        fontSize: 25,
+        color: grey800,
+
+      },
+      label: {
+        position: 'absolute',
+        background: yellow100,
+        width: 60,
+        height: 20,
+        top: '90px',
+        left: '15px',
+        fontSize: 12,
+        color: grey800,
+      },
     };
 
     return (
-      <Paper style={styles.paper}>
-        <span style={styles.iconSpan}>
+      <div style={styles.paper}>
+        <div style={styles.iconSpan}>
           <Icon color={color}
             style={styles.icon}
           />
-        </span>
-        <div style={styles.content}>
-          <span style={styles.title}>{title}</span>
-          <h4 style={styles.version}>Version {version}</h4>
+          <div style={styles.ex}>1/1</div>
+          <div style={styles.label}>NDEP</div>
         </div>
-      </Paper>
+        <div style={styles.content}>
+          <span style={styles.title}>{title.length < 16 ? title : title.substring(0, 13) + '...'}</span>
+          <h4 style={styles.version}>Version {version.length < 8 ? version : version.substring(0, 5) + '...'}</h4>
+        </div>
+      </div>
     );
   }
 }
+
 
 ServiceBox.propTypes = {
   Icon: PropTypes.any, // eslint-disable-line
